@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum SurfaceType {
+  SYNTHETIC_GRASS
+  CONCRETE
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  phone     String?
+  role      Role     @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings Booking[]
+
+  @@map("users")
+}
+
+model Field {
+  id           String      @id @default(cuid())
+  name         String
+  surfaceType  SurfaceType
+  description  String?
+  pricePerHour Decimal     @db.Decimal(10, 2)
+  imageUrl     String?
+  isActive     Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  bookings Booking[]
+
+  @@map("fields")
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  userId        String
+  fieldId       String
+  date          DateTime      @db.Date
+  startTime     String        // Format: "HH:MM" e.g. "12:00"
+  endTime       String        // Format: "HH:MM" e.g. "15:00"
+  durationHours Int
+  totalPrice    Decimal       @db.Decimal(10, 2)
+  status        BookingStatus @default(PENDING)
+  notes         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  field   Field    @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+  payment Payment?
+
+  // Prevent double booking: same field, same date, same start time
+  @@unique([fieldId, date, startTime])
+  @@map("bookings")
+}
+
+model Payment {
+  id              String        @id @default(cuid())
+  bookingId       String        @unique
+  amount          Decimal       @db.Decimal(10, 2)
+  method          String        @default("QRIS")
+  status          PaymentStatus @default(PENDING)
+  orderId         String?       @unique // Midtrans order ID / mock ID
+  snapToken       String?       // Midtrans snap token
+  qrCodeUrl       String?       // QR code image URL (mock or real)
+  paidAt          DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}

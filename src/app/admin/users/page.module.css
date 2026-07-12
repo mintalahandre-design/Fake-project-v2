@@ -1,0 +1,51 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead { background: var(--color-surface-2); }
+
+.table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: var(--color-bg); }
+
+.numCell { color: var(--color-muted-light); font-size: 13px; width: 40px; }
+
+.userCell { display: flex; align-items: center; gap: 10px; }
+
+.avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userName { font-weight: 600; }
+.emailCell { color: var(--color-muted); }
+.phoneCell { color: var(--color-muted); font-size: 13px; }
+.dateCell { color: var(--color-muted); font-size: 13px; }
+.bookingCount { font-weight: 700; color: var(--color-primary); }

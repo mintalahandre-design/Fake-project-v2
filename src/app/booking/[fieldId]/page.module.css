@@ -1,0 +1,56 @@
+.container {
+  background: var(--color-bg);
+  min-height: calc(100vh - 128px);
+}
+
+.breadcrumb {
+  margin-bottom: 24px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--color-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color var(--transition-fast);
+}
+.backBtn:hover { color: var(--color-text); }
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.rowLabel { font-size: 14px; color: var(--color-muted); }
+.rowValue { font-size: 14px; font-weight: 600; }
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.totalPrice {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-primary);
+}

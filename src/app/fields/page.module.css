@@ -1,0 +1,59 @@
+.fieldTabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.fieldTab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-body);
+  text-align: left;
+}
+
+.fieldTab:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.fieldTab.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+}
+
+.fieldTabIcon { font-size: 28px; }
+
+.fieldTabName {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+}
+
+.fieldTabSurface {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+.fieldTabPrice {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--color-primary);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.datePicker {
+  margin-bottom: 28px;
+}

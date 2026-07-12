@@ -1,0 +1,99 @@
+.container { background: var(--color-bg); min-height: calc(100vh - 128px); }
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.statCard {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all var(--transition-fast);
+}
+
+.statCard:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.statIcon { font-size: 32px; flex-shrink: 0; }
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.statTitle { font-size: 13px; color: var(--color-muted); margin-top: 3px; }
+.statSub { font-size: 11px; color: var(--color-success); margin-top: 2px; font-weight: 600; }
+
+.chartCard {
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-family: var(--font-heading);
+  margin-bottom: 20px;
+  color: var(--color-text);
+}
+
+.fieldStatsCard {
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.fieldStatRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.fieldStatRow:last-child { border-bottom: none; }
+
+.fieldStatRank {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fieldStatName { flex: 1; font-weight: 600; font-size: 15px; }
+.fieldStatCount { font-size: 14px; color: var(--color-muted); }
+
+.quickLinks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.quickLink {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+}
+.quickLink:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+
+@media (max-width: 768px) {
+  .quickLinks { grid-template-columns: 1fr; }
+}

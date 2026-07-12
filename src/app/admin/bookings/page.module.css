@@ -1,0 +1,40 @@
+.bookingRow {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all var(--transition-fast);
+}
+.bookingRow:hover { box-shadow: var(--shadow-md); }
+
+.bookingMain {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.userInfo { display: flex; flex-direction: column; gap: 2px; }
+.userName { font-weight: 700; font-size: 14px; }
+.userEmail { font-size: 12px; color: var(--color-muted); }
+.userPhone { font-size: 12px; color: var(--color-muted); }
+
+.bookingDetails { display: flex; flex-direction: column; gap: 4px; }
+.detailField { font-size: 14px; font-weight: 600; }
+.detailTime { font-size: 13px; color: var(--color-muted); }
+.detailPrice { font-size: 14px; font-weight: 700; color: var(--color-primary); font-family: var(--font-heading); }
+
+.bookingStatus { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+
+.actions {
+  display: flex;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .bookingMain { grid-template-columns: 1fr; }
+  .bookingStatus { align-items: flex-start; }
+}
