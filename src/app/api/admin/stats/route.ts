@@ -74,9 +74,9 @@ export async function GET() {
 
     // Resolve field names
     const fields = await prisma.field.findMany({ select: { id: true, name: true } });
-    const fieldMap = Object.fromEntries(fields.map((f) => [f.id, f.name]));
+    const fieldMap = Object.fromEntries(fields.map((f: { id: string; name: string }) => [f.id, f.name]));
 
-    const fieldStats = bookingsByField.map((b) => ({
+    const fieldStats = bookingsByField.map((b: any) => ({
       fieldId: b.fieldId,
       fieldName: fieldMap[b.fieldId] || b.fieldId,
       count: b._count.id,
